@@ -9,12 +9,16 @@ import { getMoviesByQuery } from 'services/movies-API';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [moviesChecker, setMoviesChecker] = useState(true);
 
   const searched = searchParams.get('query');
 
   useEffect(() => {
     if (searched)
-      getMoviesByQuery(searched.trim()).then(res => setMovies(res.results));
+      getMoviesByQuery(searched.trim()).then(res => {
+        res.results.length ? setMoviesChecker(true) : setMoviesChecker(false);
+        setMovies(res.results);
+      });
   }, [searched]);
 
   const handleFormSubmit = query => {
@@ -24,7 +28,13 @@ const Movies = () => {
   return (
     <div>
       <SearchBar onSubmit={handleFormSubmit} />
-      <SearchMoviesList movies={movies} />
+      {moviesChecker ? (
+        <SearchMoviesList movies={movies} />
+      ) : (
+        <h2 style={{ fontSize: '20px', color: '#FFF', marginLeft: '1rem' }}>
+          Nothing found ... try again
+        </h2>
+      )}
     </div>
   );
 };
