@@ -1,13 +1,19 @@
-import bgImg from './assets/images/bg.webp';
 const theme = {
   colors: {
     primary: '#3e4e55',
     primaryLight: '#4b5c63',
     primaryDark: '#36464d',
-    blue: '#4169e1',
+
+    text: '#497b86',
+    textGrey: '#182c33',
+    textRed: '#c12701',
+    textDarkRed: 'rgba(135, 30, 1, 1)',
+
+    orange: '#ff6b01',
 
     acent: '#24c1e0',
     white: '#FFF',
+    whiteRGBA: 'rgba(255,255,255,.3)',
     black: '#000',
     warm: '#DBC7C9',
     pink: '#ffa5a9',
@@ -17,14 +23,9 @@ const theme = {
     red: '#DC2626',
     green: '#00ea00',
   },
-  fontFamily: {
-    caveat: '"Caveat", cursive',
-  },
-  img: {
-    bg: `url(${bgImg})`,
-  },
+
   shadows: {
-    box: '20px 20px 50px rgba(0, 0, 0, .5)',
+    box: '10px 10px 10px -1px rgba(255, 255, 255, .1)',
   },
 };
 export default theme;
