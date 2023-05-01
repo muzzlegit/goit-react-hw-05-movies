@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { useState } from 'react';
 //ICONS
 import { MdRocketLaunch } from 'react-icons/md';
 //STYLES
 import { Form, Input, Button } from './SearchBar.styles';
 
-const SearchBar = ({ onSubmit }) => {
+const SearchBar = ({ onSubmit, setMoviesChecker }) => {
   const [query, setQuery] = useState('');
 
   const onInputChange = e => {
@@ -15,8 +16,13 @@ const SearchBar = ({ onSubmit }) => {
   const onFormSubmit = e => {
     e.preventDefault();
     if (query.trim() === '') return;
+
     onSubmit(query.trim());
   };
+
+  useEffect(() => {
+    if (query === '') setMoviesChecker(true);
+  }, [query, setMoviesChecker]);
 
   return (
     <Form onSubmit={onFormSubmit}>
@@ -39,4 +45,5 @@ export default SearchBar;
 
 SearchBar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  setMoviesChecker: PropTypes.func.isRequired,
 };

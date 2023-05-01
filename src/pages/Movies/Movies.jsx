@@ -27,7 +27,10 @@ const Movies = () => {
   };
   return (
     <div>
-      <SearchBar onSubmit={handleFormSubmit} />
+      <SearchBar
+        onSubmit={handleFormSubmit}
+        setMoviesChecker={setMoviesChecker}
+      />
       {moviesChecker ? (
         <SearchMoviesList movies={movies} />
       ) : (
