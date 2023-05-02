@@ -21,8 +21,8 @@ const App = () => {
             <Route path="reviews" element={<Reviews />} />
           </Route>
           <Route path="movies" element={<Movies />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
   );

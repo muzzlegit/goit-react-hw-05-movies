@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { NavLink, useParams, Outlet } from 'react-router-dom';
 //API
 import { getMovieById } from 'services/movies-API';
@@ -107,7 +107,9 @@ const MovieCard = () => {
               reviews
             </NavLink>
           </Links>
-          <Outlet />
+          <Suspense>
+            <Outlet />
+          </Suspense>
         </AdditionalInfo>
       </Card>
 
